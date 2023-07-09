@@ -35,7 +35,7 @@ Persistent
 ; https://learn.microsoft.com/en-us/windows-hardware/drivers/audio/mapping-stream-formats-to-speaker-configurations
 Run "Resources\svcl.exe /SetSpatial `"DefaultRenderDevice`" `"`"", , "Hide"
 Run "Resources\svcl.exe /SetSpeakersConfig `"DefaultRenderDevice`" 0x3 0x3 0x3", , "Hide"
-Run "Resources\svcl.exe /SetDefaultFormat `"DefaultRenderDevice`" 16 44100", , "Hide"
+Run "Resources\svcl.exe /SetDefaultFormat `"DefaultRenderDevice`" 32 192000", , "Hide"
 Run "Resources\svcl.exe /SetAllowExclusive `"DefaultRenderDevice`" 0", , "Hide"
 
 ; We are going to use two main tray menus. One simple and 
@@ -146,18 +146,6 @@ A_IconTip := "Spatial Audio Switcher"
 		Run "explorer.exe shell:appsFolder\DTSInc.DTSSoundUnbound_t5j2fzbtdg37r!App"
 		}
 	
-	; Function to enable Windows Sonic for Headphones.
-		SonicEnable(*)
-		{
-		Run "Resources\svcl.exe /SetSpatial `"DefaultRenderDevice`" `"{b53d940c-b846-4831-9f76-d102b9b725a0}`"", , "Hide"
-		TraySetIcon "Icons\sonic.ico"
-		Tray.Enable "&Disable Spatial Audio"
-		SpatialMenu.Enable "&Disable Spatial Audio"
-		Tray.Enable "1&"
-		Tray.Rename "1&", "Windows Sonic for Headphones"
-		Tray.SetIcon "Windows Sonic for Headphones", "Icons\sonic.ico"
-		Tray.Add "Windows Sonic for Headphones", Empty
-		}
 		
 	; Function to run SoundVolumeView, our advanced sound device manager.
 		Advanced(*)
@@ -238,6 +226,7 @@ A_IconTip := "Spatial Audio Switcher"
 		DefaultFormat.Uncheck "24 Bit, 48000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 96000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 192000 Hz"
+		DefaultFormat.Uncheck "32 Bit, 192000 Hz"
 		}
 		
 	; Function to set the default format to 16 bit, 48000 Hz.
@@ -252,6 +241,7 @@ A_IconTip := "Spatial Audio Switcher"
 		DefaultFormat.Uncheck "24 Bit, 48000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 96000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 192000 Hz"
+		DefaultFormat.Uncheck "32 Bit, 192000 Hz"
 		}
 		
 	; Function to set the default format to 16 bit, 96000 Hz.
@@ -266,6 +256,7 @@ A_IconTip := "Spatial Audio Switcher"
 		DefaultFormat.Uncheck "24 Bit, 48000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 96000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 192000 Hz"
+		DefaultFormat.Uncheck "32 Bit, 192000 Hz"
 		}
 		
 	; Function to set the default format to 16 bit, 192000 Hz.
@@ -280,6 +271,7 @@ A_IconTip := "Spatial Audio Switcher"
 		DefaultFormat.Uncheck "24 Bit, 48000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 96000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 192000 Hz"
+		DefaultFormat.Uncheck "32 Bit, 192000 Hz"
 		}
 		
 	; Function to set the default format to 24 bit, 44100 Hz.
@@ -294,6 +286,7 @@ A_IconTip := "Spatial Audio Switcher"
 		DefaultFormat.Uncheck "24 Bit, 48000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 96000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 192000 Hz"
+		DefaultFormat.Uncheck "32 Bit, 192000 Hz"
 		}
 	
 	; Function to set the default format to 24 bit, 48000 Hz.
@@ -308,6 +301,7 @@ A_IconTip := "Spatial Audio Switcher"
 		DefaultFormat.Check "24 Bit, 48000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 96000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 192000 Hz"
+		DefaultFormat.Uncheck "32 Bit, 192000 Hz"
 		}
 		
 	; Function to set the default format to 24 bit, 96000 Hz.
@@ -322,6 +316,7 @@ A_IconTip := "Spatial Audio Switcher"
 		DefaultFormat.Uncheck "24 Bit, 48000 Hz"
 		DefaultFormat.Check "24 Bit, 96000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 192000 Hz"
+		DefaultFormat.Uncheck "32 Bit, 192000 Hz"
 		}
 		
 	; Function to set the default format to 24 bit, 192000 Hz.
@@ -336,6 +331,21 @@ A_IconTip := "Spatial Audio Switcher"
 		DefaultFormat.Uncheck "24 Bit, 48000 Hz"
 		DefaultFormat.Uncheck "24 Bit, 96000 Hz"
 		DefaultFormat.Check "24 Bit, 192000 Hz"
+		DefaultFormat.Uncheck "32 Bit, 192000 Hz"
+		}
+		; Function to set the default format to 24 bit, 192000 Hz.
+		df32192(*)
+		{
+		Run "Resources\svcl.exe /SetDefaultFormat `"DefaultRenderDevice`" 32 192000", , "Hide"
+		DefaultFormat.Uncheck "16 Bit, 44100 Hz"
+		DefaultFormat.Uncheck "16 Bit, 48000 Hz"
+		DefaultFormat.Uncheck "16 Bit, 96000 Hz"
+		DefaultFormat.Uncheck "16 Bit, 192000 Hz"
+		DefaultFormat.Uncheck "24 Bit, 44100 Hz"
+		DefaultFormat.Uncheck "24 Bit, 48000 Hz"
+		DefaultFormat.Uncheck "24 Bit, 96000 Hz"
+		DefaultFormat.Uncheck "24 Bit, 192000 Hz"
+		DefaultFormat.Check "32 Bit, 192000 Hz"
 		}
 		
 	; Function to reload the Spatial Audio Switcher.
@@ -351,7 +361,7 @@ A_IconTip := "Spatial Audio Switcher"
 		{
 		Run "Resources\svcl.exe /SetSpatial `"DefaultRenderDevice`" `"`"", , "Hide"
 		Run "Resources\svcl.exe /SetSpeakersConfig `"DefaultRenderDevice`" 0x3 0x3 0x3", , "Hide"
-		Run "Resources\svcl.exe /SetDefaultFormat `"DefaultRenderDevice`" 16 44100", , "Hide"
+		Run "Resources\svcl.exe /SetDefaultFormat `"DefaultRenderDevice`" 32 192000", , "Hide"
 		Run "Resources\svcl.exe /SetAllowExclusive `"DefaultRenderDevice`" 0", , "Hide"
 		Sleep 0
 		ExitApp
@@ -380,8 +390,6 @@ A_IconTip := "Spatial Audio Switcher"
 		Select.SetIcon "Dolby Atm&os for Headphones", "Icons\dolby.ico"
 		Select.Add "DTS Headphone:&X", DTSEnable
 		Select.SetIcon "DTS Headphone:&X", "Icons\dts.ico"
-		Select.Add "Windows &Sonic for Headphones", SonicEnable
-		Select.SetIcon "Windows &Sonic for Headphones", "Icons\sonic.ico"
 
 		; Settings submenu.
 		Tray.Add "&Audio Settings", Settings	
@@ -405,6 +413,7 @@ A_IconTip := "Spatial Audio Switcher"
 		DefaultFormat.Add "24 Bit, 48000 Hz", df2448
 		DefaultFormat.Add "24 Bit, 96000 Hz", df2496
 		DefaultFormat.Add "24 Bit, 192000 Hz", df24192
+		DefaultFormat.Add "32 Bit, 192000 Hz", df32192
 		
 		; Exclusivity submenu
 		Tray.Add "&Exclusivity", Exclusivity
@@ -441,8 +450,6 @@ A_IconTip := "Spatial Audio Switcher"
 		SpatialMenu.SetIcon "Dolby Atm&os for Headphones", "Icons\dolby.ico"
 		SpatialMenu.Add "DTS Headphone:&X", DTSEnable
 		SpatialMenu.SetIcon "DTS Headphone:&X", "Icons\dts.ico"
-		SpatialMenu.Add "Windows &Sonic for Headphones", SonicEnable
-		SpatialMenu.SetIcon "Windows &Sonic for Headphones", "Icons\sonic.ico"
 		
 		; A Seperator
 		SpatialMenu.Add
@@ -458,13 +465,16 @@ A_IconTip := "Spatial Audio Switcher"
 		SpatialApps.Add "DTS Sound &Unbound", DTSSoundUnbound
 		SpatialApps.SetIcon "DTS Sound &Unbound", "Icons\dts.ico"
 
+		;Allow setting default format from simple menu
+		SpatialMenu.Add "Default &Format", DefaultFormat
+
 ; Now we will make tray menu show our default settings.
 Exclusivity.Uncheck "&Exclusive"
 Exclusivity.Check "&Not Exclusive"
 Configuration.Check "&Stereo"
 Configuration.Uncheck "&Five-point One"
 Configuration.Uncheck "S&even-point One"
-DefaultFormat.Check "16 Bit, 44100 Hz"
+DefaultFormat.Uncheck "16 Bit, 44100 Hz"
 DefaultFormat.Uncheck "16 Bit, 48000 Hz"
 DefaultFormat.Uncheck "16 Bit, 96000 Hz"
 DefaultFormat.Uncheck "16 Bit, 192000 Hz"
@@ -472,6 +482,7 @@ DefaultFormat.Uncheck "24 Bit, 44100 Hz"
 DefaultFormat.Uncheck "24 Bit, 48000 Hz"
 DefaultFormat.Uncheck "24 Bit, 96000 Hz"
 DefaultFormat.Uncheck "24 Bit, 192000 Hz"
+DefaultFormat.Check "32 Bit, 192000 Hz"
 
 ; Now we will make the simple tray menu the default.
 ; This is needed to open it with one left click to the tray icon.
