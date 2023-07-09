@@ -104,8 +104,8 @@ A_IconTip := "Spatial Audio Switcher"
 		Tray.Rename "1&", "Disabled"
 		Tray.SetIcon "Disabled", ""
 		Tray.Add "Disabled", Empty
-		Tray.Disable "&Disable Spatial Audio"
-		SpatialMenu.Disable "&Disable Spatial Audio"
+		Tray.Disable "Disable Spatial Audio"
+		SpatialMenu.Disable "Disable Spatial Audio"
 		}
 	
 	; Function to enable Dolby Atmos for Headphones.
@@ -113,8 +113,8 @@ A_IconTip := "Spatial Audio Switcher"
 		{
 		Run "Resources\svcl.exe /SetSpatial `"DefaultRenderDevice`" `"Dolby Atmos`"", , "Hide"
 		TraySetIcon "Icons\dolby.ico"
-		Tray.Enable "&Disable Spatial Audio"
-		SpatialMenu.Enable "&Disable Spatial Audio"
+		Tray.Enable "Disable Spatial Audio"
+		SpatialMenu.Enable "Disable Spatial Audio"
 		Tray.Enable "1&"
 		Tray.Rename "1&", "Dolby &Atmos for Headphones"
 		Tray.SetIcon "Dolby &Atmos for Headphones", "Icons\dolby.ico"
@@ -132,8 +132,8 @@ A_IconTip := "Spatial Audio Switcher"
 		{
 		Run "Resources\svcl.exe /SetSpatial `"DefaultRenderDevice`" `"DTS`"", , "Hide"
 		TraySetIcon "Icons\dts.ico"
-		Tray.Enable "&Disable Spatial Audio"
-		SpatialMenu.Enable "&Disable Spatial Audio"
+		Tray.Enable "Disable Spatial Audio"
+		SpatialMenu.Enable "Disable Spatial Audio"
 		Tray.Enable "1&"
 		Tray.Rename "1&", "&DTS Headphone:X"
 		Tray.SetIcon "&DTS Headphone:X", "Icons\dts.ico"
@@ -377,9 +377,9 @@ A_IconTip := "Spatial Audio Switcher"
 
 		; Second will be an option to disable spatial audio. Shall be greyed-out
 		; when it is already disabled.
-		Tray.Add "&Disable Spatial Audio", Disable
-		Tray.SetIcon "&Disable Spatial Audio", "Icons\disable.ico"
-		Tray.Disable "&Disable Spatial Audio"
+		Tray.Add "Disable Spatial Audio", Disable
+		Tray.SetIcon "Disable Spatial Audio", "Icons\disable.ico"
+		Tray.Disable "Disable Spatial Audio"
 
 		; A seperator.
 		Tray.Add
@@ -438,9 +438,9 @@ A_IconTip := "Spatial Audio Switcher"
 		
 		; First will be an option to disable spatial audio. Shall be greyed-out
 		; when it is already disabled.
-		SpatialMenu.Add "&Disable Spatial Audio", Disable
-		SpatialMenu.SetIcon "&Disable Spatial Audio", "Icons\disable.ico"
-		SpatialMenu.Disable "&Disable Spatial Audio"
+		SpatialMenu.Add "Disable Spatial Audio", Disable
+		SpatialMenu.SetIcon "Disable Spatial Audio", "Icons\disable.ico"
+		SpatialMenu.Disable "Disable Spatial Audio"
 	
 		; A seperator.
 		SpatialMenu.Add
@@ -459,7 +459,7 @@ A_IconTip := "Spatial Audio Switcher"
 		SpatialMenu.Add "Speaker &Configuration", Configuration
 		
 		; Shortcuts to spatial audio applications.
-		SpatialMenu.Add "&Applications", SpatialApps
+		SpatialMenu.Add "Applications", SpatialApps
 		SpatialApps.Add "&Dolby Access", DolbyAccess
 		SpatialApps.SetIcon "&Dolby Access", "Icons\dolby.ico"
 		SpatialApps.Add "DTS Sound &Unbound", DTSSoundUnbound
