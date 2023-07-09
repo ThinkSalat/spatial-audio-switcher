@@ -116,9 +116,9 @@ A_IconTip := "Spatial Audio Switcher"
 		Tray.Enable "&Disable Spatial Audio"
 		SpatialMenu.Enable "&Disable Spatial Audio"
 		Tray.Enable "1&"
-		Tray.Rename "1&", "Dolby Atm&os for Headphones"
-		Tray.SetIcon "Dolby Atm&os for Headphones", "Icons\dolby.ico"
-		Tray.Add "Dolby Atm&os for Headphones", DolbyAccess
+		Tray.Rename "1&", "Dolby &Atmos for Headphones"
+		Tray.SetIcon "Dolby &Atmos for Headphones", "Icons\dolby.ico"
+		Tray.Add "Dolby &Atmos for Headphones", DolbyAccess
 		}
 		
 	; Function to run Dolby Access.
@@ -135,9 +135,9 @@ A_IconTip := "Spatial Audio Switcher"
 		Tray.Enable "&Disable Spatial Audio"
 		SpatialMenu.Enable "&Disable Spatial Audio"
 		Tray.Enable "1&"
-		Tray.Rename "1&", "DTS Headphone:&X"
-		Tray.SetIcon "DTS Headphone:&X", "Icons\dts.ico"
-		Tray.Add "DTS Headphone:&X", DTSSoundUnbound
+		Tray.Rename "1&", "&DTS Headphone:X"
+		Tray.SetIcon "&DTS Headphone:X", "Icons\dts.ico"
+		Tray.Add "&DTS Headphone:X", DTSSoundUnbound
 		}
 		
 	; Function to run DTS Sound Unbound.
@@ -386,10 +386,10 @@ A_IconTip := "Spatial Audio Switcher"
 		
 		; Select submenu.
 		Tray.Add "&Spatial Audio", Select
-		Select.Add "Dolby Atm&os for Headphones", DolbyAtmosEnable
-		Select.SetIcon "Dolby Atm&os for Headphones", "Icons\dolby.ico"
-		Select.Add "DTS Headphone:&X", DTSEnable
-		Select.SetIcon "DTS Headphone:&X", "Icons\dts.ico"
+		Select.Add "Dolby &Atmos for Headphones", DolbyAtmosEnable
+		Select.SetIcon "Dolby &Atmos for Headphones", "Icons\dolby.ico"
+		Select.Add "&DTS Headphone:X", DTSEnable
+		Select.SetIcon "&DTS Headphone:X", "Icons\dts.ico"
 
 		; Settings submenu.
 		Tray.Add "&Audio Settings", Settings	
@@ -446,10 +446,10 @@ A_IconTip := "Spatial Audio Switcher"
 		SpatialMenu.Add
 		
 		; Now the selection between the spatial audio formats.
-		SpatialMenu.Add "Dolby Atm&os for Headphones", DolbyAtmosEnable
-		SpatialMenu.SetIcon "Dolby Atm&os for Headphones", "Icons\dolby.ico"
-		SpatialMenu.Add "DTS Headphone:&X", DTSEnable
-		SpatialMenu.SetIcon "DTS Headphone:&X", "Icons\dts.ico"
+		SpatialMenu.Add "Dolby &Atmos for Headphones", DolbyAtmosEnable
+		SpatialMenu.SetIcon "Dolby &Atmos for Headphones", "Icons\dolby.ico"
+		SpatialMenu.Add "&DTS Headphone:X", DTSEnable
+		SpatialMenu.SetIcon "&DTS Headphone:X", "Icons\dts.ico"
 		
 		; A Seperator
 		SpatialMenu.Add
